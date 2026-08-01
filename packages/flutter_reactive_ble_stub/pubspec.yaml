@@ -1,0 +1,14 @@
+name: flutter_reactive_ble
+description: >
+  OpenHarmony 占位实现。flutter_reactive_ble 社区暂无鸿蒙（OpenHarmony）
+  适配，这里仅提供最小 API 让工程在鸿蒙平台编译通过；运行时 BLE 不可用，
+  由 UI 层（device_screen）在 Platform.isOhos 时降级提示。
+version: 5.0.0
+homepage: https://gitee.com/openharmony-sig
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.27.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
