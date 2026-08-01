@@ -1,0 +1,11 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "米工作台模块" },
+    { "name": "EntryAbility_desc", "value": "米工作台入口" },
+    { "name": "EntryAbility_label", "value": "米工作台" },
+    { "name": "perm_net", "value": "访问网络以下载数据" },
+    { "name": "perm_ble", "value": "连接蓝牙体脂秤 / 手表手环" },
+    { "name": "perm_loc", "value": "蓝牙扫描时获取位置信息" },
+    { "name": "perm_fs", "value": "导出 / 导入本地备份文件" }
+  ]
+}
