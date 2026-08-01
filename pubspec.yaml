@@ -1,0 +1,72 @@
+name: mi_workbench
+description: 米工作台 - 鸿蒙(HarmonyOS NEXT)版 Flutter App（OpenHarmony 适配）
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  # 本工程面向 OpenHarmony Flutter（3.27.4-ohos-1.0.4 等），需 3.27+。
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.27.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
+  path_provider: ^2.1.4
+  provider: ^6.1.2
+  intl: ^0.19.0
+  fl_chart: ^0.69.0
+  table_calendar: ^3.1.2
+  uuid: ^4.5.0
+  # 鸿蒙无社区适配版，运行时由本地 stub 占位 + UI 降级（见 dependency_overrides）
+  flutter_reactive_ble: ^5.0.0
+  shared_preferences: ^2.3.2
+  # 本地通知（OpenHarmony 适配版在 dependency_overrides 指定）
+  flutter_local_notifications: ^17.2.3
+  timezone: ^0.9.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+# ===== OpenHarmony 平台适配：把官方插件覆盖为鸿蒙兼容版 =====
+# 来源见 OHOS_BUILD.md。纯 Dart 库（fl_chart / table_calendar / intl /
+# uuid / provider / cupertino_icons / path / timezone）无需覆盖，直接可用。
+dependency_overrides:
+  # 本地数据库（OpenHarmony SIG 维护）
+  sqflite:
+    git:
+      url: "https://gitee.com/openharmony-sig/flutter_sqflite.git"
+      path: "sqflite"
+      ref: "master"
+  sqflite_common_ffi:
+    git:
+      url: "https://gitee.com/openharmony-sig/flutter_sqflite.git"
+      path: "sqflite_common_ffi"
+      ref: "master"
+  # 文件路径（openharmony-tpc 维护）
+  path_provider:
+    git:
+      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
+      path: "packages/path_provider/path_provider"
+      ref: "master"
+  # 轻量 KV 存储
+  shared_preferences:
+    git:
+      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
+      path: "packages/shared_preferences/shared_preferences"
+      ref: "master"
+  # 本地通知（OpenHarmony SIG 维护，对应 17.2.4）
+  flutter_local_notifications:
+    git:
+      url: "https://gitcode.com/openharmony-sig/fluttertpc_flutter_local_notifications.git"
+      ref: "br_flutter_local_notifications-v17.2.4_ohos"
+  # BLE 无社区鸿蒙适配 → 本地占位 stub，运行时降级
+  flutter_reactive_ble:
+    path: packages/flutter_reactive_ble_stub
+
+flutter:
+  uses-material-design: true
